@@ -1,0 +1,48 @@
+{
+    "common": {
+        "name": "vis-splitsys",
+        "version": "0.0.1",
+        "news": {     
+            "0.0.1": {
+                "en": "initial adapter",
+                "de": "Initiale Version",
+                "ru": "РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅС‹Р№ Р°РґР°РїС‚РµСЂ",
+                "pt": "VersГЈo inicial",
+                "fr": "Version initiale",
+                "nl": "Eerste release"
+            }
+        },
+        "title": "ioBroker Visualisation - splitsys Widgets",
+        "desc": {
+            "en": "splitsys Widgets for ioBroker.vis",
+            "de": "splitsys Widgets fГјr ioBroker.vis",
+            "ru": "splitsys Widgets РґР»СЏ ioBroker.vis",
+            "pt": "molde de Widgets para o ioBroker.vis",
+            "fr": "modГЁle de Widgets pour ioBroker.vis",
+            "nl": "sjabloon widgets voor ioBroker.vis"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "splitsys.png",
+        "enabled": true,
+        "mode": "once",
+        "extIcon": "https://github.com/salambelgord/ioBroker.js-controller/raw/master/adapter/example/admin/example.png",
+        "keywords": ["splitsys", "vis", "GUI", "graphical", "scada"],
+        "readme": "https://github.com/salambelgord/ioBroker.vis-splitsys/blob/master/README.md",
+        "authors": [
+            "Vadim <boom00@ukr.net>"
+        ],
+        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+        "license": "MIT",
+        "dependencies": ["vis"],
+        "onlyWWW": true,
+        "noConfig": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "restartAdapters": ["vis"]
+    },
+    "native": {
+        "dependencies": []
+    },
+    "instanceObjects": [
+    ]
+}
