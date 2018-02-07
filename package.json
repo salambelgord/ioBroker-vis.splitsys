@@ -1,0 +1,37 @@
+{
+  "name": "iobroker.vis-splitsys",
+  "description": "splitsys Widgets for ioBroker.vis",
+  "version": "0.0.1",
+  "author": {
+    "name": "Vadim",
+    "email": "boom00@ukr.net"
+  },
+  "contributors": [
+    "Vadim <boom00@ukr.net>"
+  ],
+  "homepage": "https://github.com/salambelgord/ioBroker-vis.splitsys",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salambelgord/ioBroker.vis-splitsys"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/salambelgord/ioBroker.vis-splitsys/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "ioBroker",
+    "GUI",
+	"splitsys vis"
+  ],
+  
+  "bugs": {
+    "url": "https://github.com/salambelgord/ioBroker.vis-splitsys/issues"
+  },
+  "main": "widgets/splitsys.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
+} 
