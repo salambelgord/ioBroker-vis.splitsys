@@ -1,3 +1,15 @@
 .splitsys-class {
     font-style: italic;
 } 
+.splitsys {
+    display: inline;
+    position: absolute;
+    overflow: hidden;
+    background-color: transparent;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+    width: 322px;
+    height: 458px;
+    z-index: 2;
+}
