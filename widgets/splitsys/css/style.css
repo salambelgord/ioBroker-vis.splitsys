@@ -13,3 +13,22 @@
     height: 458px;
     z-index: 2;
 }
+.body_sys {
+	background-image: url('../img/remoute.png');
+	width:322px; 
+	height:458px;
+	z-index: 2;
+	
+}
+@font-face{
+	 font-family:advanced_pixel_lcd-7;
+     src: url(advanced_pixel_lcd-7.ttf);
+     font-style:normal;
+}
+h1 {
+	position: absolute;
+	font-family: advanced_pixel_lcd-7;
+	font-weight: normal;
+	margin-left: 50px;
+    padding: 20px;
+}
