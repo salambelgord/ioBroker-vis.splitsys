@@ -17,7 +17,7 @@ if (vis.editMode) {
             "de": "Beschreibung von\x0AmyColor",
             "ru": "Описание\x0AmyColor"
         },
-        "htmlText":         {"en": "htmlText",      "de": "htmlText",   "ru": "htmlText"},
+        "htmlText":         {"en": "htmlText",      "de": "htmlText",   "ru": "Текст"},
         "group_extraMyset": {"en": "extraMyset",    "de": "extraMyset", "ru": "extraMyset"},
         "extraAttr":        {"en": "extraAttr",     "de": "extraAttr",  "ru": "extraAttr"}
     });
