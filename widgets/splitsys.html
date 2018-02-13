@@ -5,16 +5,17 @@
 <script id="tplSplitsysBtn"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<img style="width:100px; height:150px" src="widgets/splitsys/img/remoute.png"></img>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
         data-vis-set="splitsys"
+        data-vis-prev='<img style="width:100px; height:150px" src="widgets/splitsys/img/rem_body.png"></img>'
+        data-vis-attrs="oid/id;oid;html_append_singular;myColor/color;test_html"
+        
         data-vis-type="val"
         data-vis-beta="true"
         data-vis-name="SplitSys">
     <div class="vis-widget <%== this.data.attr('class') %>" style="width:270px; height:400px;" id="<%= this.data.attr('wid') %>" >
         <div class="body_sys <%== this.data.attr('class') %>" style="padding:2px" >
            
-           <h1 style="color: <%= this.data.attr('myColor') %>" ><%== vis.states[this.data.attr('oid') + '.val'] %></h1> <br>
+           <h1 style="color: <%= this.data.attr('myColor') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1>  <br>
 			
 			
 			
