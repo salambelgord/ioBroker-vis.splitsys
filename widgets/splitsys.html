@@ -13,11 +13,16 @@
         data-vis-beta="true"
         data-vis-name="SplitSys">
     <div class="vis-widget <%== this.data.attr('class') %>" style="width:270px; height:400px;" id="<%= this.data.attr('wid') %>" >
-        <div class="body_sys <%== this.data.attr('class') %>" style="padding:2px" >
+        <div class="vis-widget <%== this.data.attr('class') %>" style="padding:2px" >
            
            <h1 style="color: <%= this.data.attr('myColor') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1>  <br>
 			
-			
+		<div ><img src="widgets/splitsys/img/remoute.png" width="135" height="200" usemap="#Navigation" 
+               alt="Remoute"></div>
+  <p><map name="Navigation">
+  <area class="winamp-btn" data-id="repeat"   shape="circle" coords="130,100,12"  href="#" alt="Toggle Repeat">
+  
+  </map></p>	
 			
 			
         </div>
