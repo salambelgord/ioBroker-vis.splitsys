@@ -45,7 +45,10 @@ vis.binds.splitsys = {
                 vis.binds.splitsys.createWidget(widgetID, view, data, style);
             }, 100);
         }
-
+// установим обработчик события click, элементу с идентификатором foo
+$(".btn").click(function(){
+  alert('Вы нажали на элемент "foo"');
+});
         var text = '';
         text += 'OID: ' + data.oid + '</div><br>';
         text += 'OID value: <span class="myset-value">' + vis.states[data.oid + '.val'] + '</span><br>';
