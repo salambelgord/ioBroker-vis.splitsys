@@ -1,71 +1,73 @@
 /*
     ioBroker.vis splitsys Widget-Set
-
-    version: "0.0.1"
-
-    Copyright 10.2015-2016 Vadim<boom00@ukr.net>
-
+    version: "0.1.4"
+    Copyright 2018 nisiode<nisio.air@mail.com>
+    forked by Pix 7/2018 (humidity, shutter)
 */
 "use strict";
 
 // add translations for edit mode
 if (vis.editMode) {
     $.extend(true, systemDictionary, {
-        "myColor":          {"en": "myColor",       "de": "mainColor",  "ru": "Мой цвет"},
-        "myColor_tooltip":  {
-            "en": "Description of\x0AmyColor",
-            "de": "Beschreibung von\x0AmyColor",
-            "ru": "Описание\x0AmyColor"
-        },
-        "htmlText":         {"en": "htmlText",      "de": "htmlText",   "ru": "Текст"},
-        "group_extraMyset": {"en": "extraMyset",    "de": "extraMyset", "ru": "extraMyset"},
-        "extraAttr":        {"en": "extraAttr",     "de": "extraAttr",  "ru": "extraAttr"}
+        "title":          {"en": "Title",       "de": "Titel",  "ru": "Заголовок"},
+        "subtitle":       {"en": "Subtitle",      "de": "Untertitel",   "ru": "Подзаголовок"}
     });
 }
 
 // add translations for non-edit mode
 $.extend(true, systemDictionary, {
-    "Instance":  {"en": "Instance", "de": "Instanz", "ru": "Инстанция"}
+    "Instance":     {"en": "Instance", "de": "Instanz", "ru": "Инстанция"},
+    "open":         {"en": "open", "de": "offen", "ru": "открыто"},
+    "tilted":       {"en": "tilted", "de": "gekippt", "ru": "приоткрыто"},
+    "closed":       {"en": "closed", "de": "geschlossen", "ru": "закрыто"},
+    "on":           {"en": "on", "de": "an", "ru": "вкл"},
+    "off":          {"en": "off", "de": "aus", "ru": "выкл"}
 });
 
-// this code can be placed directly in splitsys.html
 vis.binds.splitsys = {
-    version: "0.0.1",
+    version: "0.0.2",
     showVersion: function () {
         if (vis.binds.splitsys.version) {
             console.log('Version splitsys: ' + vis.binds.splitsys.version);
             vis.binds.splitsys.version = null;
         }
-    },
-	createWidget: function (widgetID, view, data, style) {
+    },tplSplitRem: function (widgetID, view, data) {
+        const srcOff = 'widgets/splitsys/img/light_light_dim_00.png';
+        const srcOn = 'widgets/splitsys/img/light_light_dim_100.png';
         var $div = $('#' + widgetID);
+
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.splitsys.createWidget(widgetID, view, data, style);
+                vis.binds.splitsys.tplSplitRem(widgetID, view, data);
             }, 100);
         }
-// установим обработчик события click, элементу с идентификатором foo
-$(".btn").click(function(){
-  alert('Вы нажали на элемент "foo"');
-});
-        var text = '';
-        text += 'OID: ' + data.oid + '</div><br>';
-        text += 'OID value: <span class="myset-value">' + vis.states[data.oid + '.val'] + '</span><br>';
-        text += 'Color: <span style="color: ' + data.myColor + '">' + data.myColor + '</span><br>';
-        text += 'extraAttr: ' + data.extraAttr + '<br>';
-        text += 'Browser instance: ' + vis.instance + '<br>';
-        text += 'htmlText: <textarea readonly style="width:100%">' + (data.htmlText || '') + '</textarea><br>';
 
-        $('#' + widgetID).html(text);
+        function update(state){
+            var src = (state) ? srcOn : srcOff;
+            var $tmp = $('#' + widgetID + '_checkbox');
+            $tmp.prop('checked', state);
+            $div.find('.md-list-icon').find('img').attr('src', src);
+        }
 
-        // subscribe on updates of value
-        if (data.oid) {
-            vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
-                $div.find('.splitsys-value').html(newVal);
+        if (!vis.editMode) {
+            var $this = $('#' + widgetID + '_checkbox');
+            $this.change(function () {
+                var $this_ = $(this);
+                vis.setValue($this_.data('oid'), $this_.prop('checked'));
             });
+        }
+        
+        if (data.oid) {
+            // subscribe on updates of value
+            vis.states.bind(data.oid + '.val', function (e, newVal, oldVal) {
+                update(newVal);
+            });
+
+            // set current value
+            update(vis.states[data.oid + '.val']);
         }
     }
 };
-	
+
 vis.binds.splitsys.showVersion();
