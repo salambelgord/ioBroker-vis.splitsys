@@ -1,49 +1,33 @@
-<link rel="stylesheet" href="widgets/splitsys/css/style.css" />
-<link rel="stylesheet" href="widgets/splitsys/css/jquery.ibutton.css" />
+<!--
+    ioBroker.vis splitsys Widget-Set
+    version: "0.1.5"
+    Copyright 2018 nisiode<nisio.air@mail.com>
+    forked by Pix (7/2018) (Humidty, shutter)
+
+-->
+
+<!-- here you can include so many css as you want -->
+<link rel="stylesheet" href="widgets/splitsys/css/material.css" />
+<link rel="stylesheet" href="widgets/splitsys/css/jquery-ui.css" />
+<!-- here you can include so many js-files as you want -->
 <script type="text/javascript" src="widgets/splitsys/js/splitsys.js"></script>
 
-<script id="tplSplitsysBtn"
-        type="text/ejs"
-        class="vis-tpl"
-        data-vis-set="splitsys"
-        data-vis-prev='<img style="width:100px; height:150px" src="widgets/splitsys/img/rem_body.png"></img>'
-        data-vis-attrs="oid/id;oid;html_append_singular;myColor/color;test_html"
-        
-        data-vis-type="val"
-        data-vis-beta="true"
-        data-vis-name="SplitSys">
-    <div class="vis-widget <%== this.data.attr('class') %>" style="width:270px; height:400px;" id="<%= this.data.attr('wid') %>" >
-        <div class="vis-widget <%== this.data.attr('class') %>" style="padding:2px" >
-           
-           <h1 style="color: <%= this.data.attr('myColor') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1>  <br>
-			
-		<div ><img src="widgets/splitsys/img/remoute.png" width="135" height="200" usemap="#Navigation" 
-               alt="Remoute"></div>
-  <p><map name="Navigation">
-  <area class="btn" data-id="power"   shape="circle" coords="60,100,12"   alt="Toggle Repeat">
-  
-  </map></p>
-  
- 	
-			
-			
-        </div>
-    </div>
-</script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
 <script id="tplMaListLight"
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<div id="prev_tplMaListLight" style="position: relative; text-align: initial;padding: 4px ">
 				<div class="vis-widget_prev " style="width: 100px; height: 100px; padding:2px; background-color: #212121" > 
-					<img src="widgets/material/img/light_light_dim_100.png" style="width: 100px; height: 100px;"></div></div>'
+					<img src="widgets/splitsys/img/light_light_dim_100.png" style="width: 100px; height: 100px;"></div></div>'
         data-vis-attrs="oid/id;title/text;subtitle/text;"
-        data-vis-set="material"
+        data-vis-set="splitsys"
         data-vis-type="val"
         data-vis-name="ListLight">
 		<div class="vis-widget <%== this.data.attr('class') %> md-list" id="<%= this.data.attr('wid') %>" >
 			<div class="vis-widget-body" >
 				<div class="md-list-icon">
-					<img src="widgets/material/img/light_light_dim_100.png">
+					<img src="widgets/splitsys/img/light_light_dim_100.png">
 				</div>
 				<div class="md-list-desc">
 					<div class="md-list-title mdui-title" >
@@ -53,13 +37,13 @@
 						<%= this.data.attr('subtitle') %>
 					</div>
 				</div>
-				<div class="md-list-value" >
-					<div class="mdui-switch" >
+				<div class="" >
+					<div  >
 						<input type="checkbox" name="<%= this.data.attr('wid') %>_checkbox" id="<%= this.data.attr('wid') %>_checkbox" data-oid="<%= this.data.attr('oid') %>" />
-						<label for="<%= this.data.attr('wid') %>_checkbox"><label>
+						<label for="checkbtn">+<label>
 					</div>
 				</div>
 			</div>
 		</div>
-		<% vis.binds.material.tplMdListLight(this.data.wid, this.view, this.data);  %>
+		<% vis.binds.splitsys.tplSplitRem(this.data.wid, this.view, this.data);  %>
 </script>
