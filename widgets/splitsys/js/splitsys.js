@@ -10,7 +10,8 @@
 if (vis.editMode) {
     $.extend(true, systemDictionary, {
         "title":          {"en": "Title",       "de": "Titel",  "ru": "Заголовок"},
-        "subtitle":       {"en": "Subtitle",      "de": "Untertitel",   "ru": "Подзаголовок"}
+        "subtitle":       {"en": "Subtitle",      "de": "Untertitel",   "ru": "Подзаголовок"},
+        "oid_2":          {"en": "Title",       "de": "Titel",  "ru": "обьект_2"},
     });
 }
 
@@ -32,8 +33,8 @@ vis.binds.splitsys = {
             vis.binds.splitsys.version = null;
         }
     },tplSplitRem: function (widgetID, view, data) {
-        const srcOff = 'widgets/splitsys/img/light_light_dim_00.png';
-        const srcOn = 'widgets/splitsys/img/light_light_dim_100.png';
+        const srcOff = 'widgets/splitsys/img/back.gif';
+        const srcOn = 'widgets/splitsys/img/back.gif';
         var $div = $('#' + widgetID);
 
         // if nothing found => wait
@@ -51,12 +52,19 @@ vis.binds.splitsys = {
         }
 
         if (!vis.editMode) {
+            var $this = $('#' + widgetID + '_checkbox2');
+            $this.change(function () {
+                var $this_ = $(this);
+                vis.setValue($this_.data('oid_2'), $this_.prop('checked'));
+            });
+        } 
+       if (!vis.editMode) {
             var $this = $('#' + widgetID + '_checkbox');
             $this.change(function () {
                 var $this_ = $(this);
                 vis.setValue($this_.data('oid'), $this_.prop('checked'));
             });
-        }
+        } 
         
         if (data.oid) {
             // subscribe on updates of value
