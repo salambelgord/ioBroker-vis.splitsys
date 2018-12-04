@@ -7,45 +7,46 @@
 -->
 
 <!-- here you can include so many css as you want -->
-
+<link rel="stylesheet" href="widgets/splitsys/css/style.css" />
 <link rel="stylesheet" href="widgets/splitsys/css/jquery.ibutton.css" />
 <!-- here you can include so many js-files as you want -->
 <script type="text/javascript" src="widgets/splitsys/js/splitsys.js"></script>
 
 
 
-<script id="tplSplitRemote"
+<script id="tplSplitRem"
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<div id="prev_tplMaListLight" style="position: relative; text-align: initial;padding: 4px ">
 				<div class="vis-widget_prev " style="width: 100px; height: 100px; padding:2px; background-color: #212121" > 
 					<img src="widgets/splitsys/img/light_light_dim_100.png" style="width: 100px; height: 100px;"></div></div>'
-        data-vis-attrs="title/text;oid/id;subtitle/text;oid_2/id;"
+        data-vis-attrs="temp1_html;oid/id;temp2_html;oid_2/id;font/color;test_html"
         data-vis-set="splitsys"
         data-vis-type="val"
         data-vis-name="Remote">
-		<div class="vis-widget <%== this.data.attr('class') %> " id="<%= this.data.attr('wid') %>" >
-			<div class="vis-widget-body" >
-			<div class="back">
-					
-				<div>
-				<div class="md-list-title mdui-title" >
-						<%= this.data.attr('title') %>
-					</div>
-<input type="checkbox" class="tgl tgl-skewed" name="<%= this.data.attr('wid') %>_checkbox2" id="<%= this.data.attr('wid') %>_checkbox2" data-oid_2="<%= this.data.attr('oid_2') %>" />
+		<div class=" <%== this.data.attr('class') %> " id="<%= this.data.attr('wid') %>" >
+		 <div class="back">
+		 <div class="box top center"><h1 style="color: <%= this.data.attr('font') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1></div>
+	<div class="box bottom left">
+			
+		<div class="box top center">
+			<div  >	<%= this.data.attr('temp1_html') %>	</div>
+<input type="checkbox" class="tgl tgl-flip" name="<%= this.data.attr('wid') %>_checkbox2" id="<%= this.data.attr('wid') %>_checkbox2" data-oid_2="<%= this.data.attr('oid_2') %>" />
 <label class="tgl-btn" data-tg-off="Off" data-tg-on="On" for="<%= this.data.attr('wid') %>_checkbox2"><label>
-			   </div>
-				<div>
-				<div class="md-list-subtitle mdui-subtitle">
-						<%= this.data.attr('subtitle') %>
-					</div>
+		
+		<div ><%= this.data.attr('temp2_html') %></div>
 <input type="checkbox" class="tgl tgl-flip" name="<%= this.data.attr('wid') %>_checkbox" id="<%= this.data.attr('wid') %>_checkbox" data-oid="<%= this.data.attr('oid') %>" />
 <label class="tgl-btn" data-tg-off="Off" data-tg-on="On" for="<%= this.data.attr('wid') %>_checkbox"><label>
-			   </div>				
-				
-				
-			  </div>	
-			</div>
 		</div>
+    </div>
+<div class="box top right" style="height: 160px" data-oid="<%= this.data.attr('oid') %>" <%= (el) -> vis.binds.jqueryui.slider(el, {min:16,max:25,step:.2,inverted:false,orientation: "vertical"}) %> /></div>
+
+
+		 </div>
+		</div>
+			
+			
+			
+		
 		<% vis.binds.splitsys.tplSplitRem(this.data.wid, this.view, this.data);  %>
 </script>
