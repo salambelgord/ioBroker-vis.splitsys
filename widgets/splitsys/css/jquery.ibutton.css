@@ -1,16 +1,103 @@
 .back {
+  display: grid;	
   position:relative;	
   padding: 2px;   
   background: url(../img/back.gif) no-repeat;
+  grid-template-rows: 1fr 1fr ;
+  grid-template-columns: 120px 120px 110px;
+  grid-column-gap: 10px;
+  grid-template-areas: 
+    "l1 c1 r1"
+    "l2 c2 r2";
+    
   height: 275px;
   width: 350px ;
 }
+.item-a {
+  grid-area: l1;  
+   margin-left:25px;
+  margin-top:70px;
+}
+.item-b {
+  grid-area: c1;
+}
+.item-c {
+  grid-area: r1;
+  margin-left:15px;
+  margin-top:70px;
+}
+.item-d {
+  grid-area: l2;
+  margin-left:25px;
+  margin-top:20px;
+}
+.item-e {
+  grid-area: c2;
+}
+.item-f {
+  grid-area: r2;
+}
 
+.container {
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+
+.container
+{	 position:absolute;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100vh;
+}
+.item0
+{	margin: 40px;
+     background-color: #fcfde6;
+     border-radius: 3px;
+    position:absolute;
+     display: flex;
+     align-items: stretch;
+     justify-content: center;
+     height: 100vh;
+}
+.item1
+{	right:0;
+     background-color: #f3f2ef;
+     border-radius: 3px;
+     
+}
+.item2
+{
+     background-color: #4b5be7;
+     border-radius: 3px;
+    
+}
+.left-div
+{		margin: 20px;
+     display: inline-block;
+     max-width: 300px;
+     vertical-align: top;
+}
+.right-div
+{		margin: 20px;
+     display: inline-block;
+     max-width: 150px;
+}
+ screen and (max-width: 600px) 
+{
+     .left-div, .right-div
+     {
+        lef  max-width: 100%;
+     }
+}
 .box{
     border:1px solid red;
-    position:absolute;
-    width:20px;
-    height:20px;
+    position:relative;
+   
     margin: 5px;
     padding: 5px;    
 }
