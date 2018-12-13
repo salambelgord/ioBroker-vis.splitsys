@@ -24,28 +24,32 @@
         data-vis-set="splitsys"
         data-vis-type="val"
         data-vis-name="Remote">
-		<div class=" <%== this.data.attr('class') %> " id="<%= this.data.attr('wid') %>" >
-		 <div class="back">
-		 <div class="box top center"><h1 style="color: <%= this.data.attr('font') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1></div>
-	<div class="box bottom left">
-			
-		<div class="box top center">
-			<div  >	<%= this.data.attr('temp1_html') %>	</div>
+        
+         <div id="<%= this.data.attr('wid') %>" class="vis-widget" style="width:360px; height: 275px;">
+       
+           
+            <div data-oid="<%= this.data.attr('oid') %>" data-oid-working="<%= this.data.attr('oid-working') %>" id="splitsys_<%= this.data.attr('wid') %>"  ></div>
+             <div class="back">
+		<div class="item-a">
+			<div  style="color: <%= this.data.attr('font') %>">	<%= this.data.attr('temp1_html') %>	</div>
 <input type="checkbox" class="tgl tgl-flip" name="<%= this.data.attr('wid') %>_checkbox2" id="<%= this.data.attr('wid') %>_checkbox2" data-oid_2="<%= this.data.attr('oid_2') %>" />
 <label class="tgl-btn" data-tg-off="Off" data-tg-on="On" for="<%= this.data.attr('wid') %>_checkbox2"><label>
+		</div>
 		
-		<div ><%= this.data.attr('temp2_html') %></div>
+<div class="item-a "><h1 style="color: <%= this.data.attr('font') %>" ><%= (vis.editMode && this.data.attr('test_html')) ? this.data.attr('test_html') : this.data.attr('oid') ? ((this.data.attr('oid').indexOf('"') !== -1) ? this.data.oid.substring(1, this.data.oid.length - 1) : (vis.states.attr(this.data.oid + '.val'))) : (vis.states.attr(this.data.oid + '.val')) %> <%== this.data.attr('html_append_singular') %></h1></div>
+
+<div class="item-c" data-oid="<%= this.data.attr('oid') %>" <%= (el) -> vis.binds.jqueryui.slider(el, {min:16,max:25,step:.2,inverted:false,orientation: "vertical"}) %> />		
+		
+		<div class="item-d">
+		<div style="color: <%= this.data.attr('font') %>"><%= this.data.attr('temp2_html') %></div>
 <input type="checkbox" class="tgl tgl-flip" name="<%= this.data.attr('wid') %>_checkbox" id="<%= this.data.attr('wid') %>_checkbox" data-oid="<%= this.data.attr('oid') %>" />
 <label class="tgl-btn" data-tg-off="Off" data-tg-on="On" for="<%= this.data.attr('wid') %>_checkbox"><label>
 		</div>
-    </div>
-<div class="box top right" style="height: 160px" data-oid="<%= this.data.attr('oid') %>" <%= (el) -> vis.binds.jqueryui.slider(el, {min:16,max:25,step:.2,inverted:false,orientation: "vertical"}) %> /></div>
-
-
-		 </div>
-		</div>
-			
-			
+ </div>
+       
+    </div>      
+        
+  
 			
 		
 		<% vis.binds.splitsys.tplSplitRem(this.data.wid, this.view, this.data);  %>
